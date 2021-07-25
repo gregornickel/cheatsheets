@@ -1,3 +1,4 @@
 # Cheatsheets
 
-[tmux](tmux.md)
+- [tmux](tmux.md)
+- [git](git.md)
