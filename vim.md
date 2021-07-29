@@ -21,6 +21,7 @@ My personal summary of vimtutor with the most useful commands.
 - Move the curser a word forward `w`
 - Move the curser to the end of a word `e`
 - Move to the start of a line `0`
+- Move to the end of a line `$`
 - Move to the bottom of the file `G`
 - Move to the start of the file `gg`
 - Move to a specific line by typing `number + G`
@@ -35,7 +36,7 @@ My personal summary of vimtutor with the most useful commands.
 - Delete a whole line `dd`
 - Join current line and the next line (remove newline) `J`Insert
 
-- Insert: press `i` to insert text
+- Insert: presse`i` to insert text
 - Append: press `A`, it does not matter at which position thr cursor is
 - Put a previously deleted text after the curser `p`
 
@@ -111,16 +112,45 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 ### Add Plugin
 
-1. Add the plugin to your `.vimrc` file.
+1. Add the plugins to the `.vimrc` file.
 ```vim
-" Plugins will be downloaded under the specified directory.
+" List of plugins managed by vim-plug (will be downloaded to specified dir)
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
-
-" Declare the list of plugins.
-	Plug 'preservim/nerdtree'
-
-" List ends here. Plugins become visible to Vim after this call.
+  Plug 'vim-airline/vim-airline'
+  Plug 'preservim/nerdtree'
+  Plug 'sonph/onehalf', { 'rtp': 'vim' }
 call plug#end()
 ```
 2. Reload your Vim configuration file (`:source ~/.vimrc`) or restart Vim, and run `:PlugInstall` to install the plugins.
+
+### Remove Plugin
+
+Remove the line from the `.vimrc` file. Quit and restart Vim, and run `:PlugClean`. Confirm the prompt to delete the directory with type `Y` .
+
+### Ctags
+
+Ctags is a programming tool that generates an index (or tag) file of names found in source and header files. The vim plugin tagbar requires ctags. With ctags it is possible to jump to functions with `ctrl + ]`. 
+
+#### Installation
+
+Install with homebrew:
+
+```shell
+brew install ctags
+```
+
+MacOS has a ctags version installed. Afterwards, set the alias to the new version:
+
+```shell
+alias ctags="`brew --prefix`/bin/ctags"
+alias ctags >> ~/.zshrc
+```
+
+The second line will add `ctags=/usr/local/bin/ctags` to the .zshrc file.
+
+Add `set tags=tags` to the `.vimrc` file with:
+
+```vim
+set tags=tags
+```
 
