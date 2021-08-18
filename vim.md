@@ -22,6 +22,7 @@ My personal summary of vimtutor with the most useful commands.
 - Move the curser to the end of a word `e`
 - Move to the start of a line `0`
 - Move to the end of a line `$`
+  - Combine commands: move to the end of the next line `j$`
 - Move to the bottom of the file `G`
 - Move to the start of the file `gg`
 - Move to a specific line by typing `number + G`
@@ -34,17 +35,28 @@ My personal summary of vimtutor with the most useful commands.
 - Delete from the current character to the end of the word `de`
 - Delete the end of a line `d$`
 - Delete a whole line `dd`
-- Join current line and the next line (remove newline) `J`Insert
+- Join current line and the next line (remove newline) `J`
 
-- Insert: presse`i` to insert text
-- Append: press `A`, it does not matter at which position thr cursor is
-- Put a previously deleted text after the curser `p`
+### Insert
+
+- Switch to insert mode (before the cursor) `i`
+- Append: switch to insert mode after the cursor `a`
+- Append: switch to insert mode at the end of a line `A` (it does not matter at which position the cursor is)
+- Open up a line below the cursor and switch to insert mode `o`
+- Open up a line above the cursor and switch to insert mode `O`
 
 ### Replace/change
 
 - Replace a character at the curser `r`
+- Switch to replace mode `R` (every typed character deletes an existing character)
 - Change until the end of a word `ce`
 - Delete the whole line and switch to insert mode `cc`
+
+### Copy and paste 
+
+- Yank (copy) one word `yw`
+- Yank a whole line `yy`
+- Put a previously copied or deleted text after the curser `p`
 
 ### Undo and redo
 
@@ -63,16 +75,40 @@ My personal summary of vimtutor with the most useful commands.
 ### Substitute 
 
 - Substitute new for the first old in the current line `:s/old/new`
-  - Substitute all 'old's on a line `:s/old/new/g`
-  - Substitute phrases between two line #'s type `:#,#s/old/new/g`
-  - Substitute all occurrences in the file type `:%s/old/new/g`
-  - To ask for confirmation each time add c `:%s/old/new/gc`
+- Substitute all 'old's on a line `:s/old/new/g`
+- Substitute phrases between two line #'s type `:#,#s/old/new/g`
+- Substitute all occurrences in the file type `:%s/old/new/g`
+- To ask for confirmation each time add c `:%s/old/new/gc`
+
+### Set option (for search and substitute) 
+
+- Set option "xxx" `:set xxx`
+  - Ignore upper/lower case `:set ic` or `:set ignorecase`
+  - Show partial matches for a search phrase `:set is` or `:set incsearch`
+  - Highlight all matching phrases `:set hls` or `:set hlsearch`
+- Switch an option off `:set noic`, etc.
+
+### Visual selection 
+
+- Select text `v`
+  - Write selected text to file `:w filename`
+  - Delete selection `:d`
+  - Yank (copy) the highlighted text `y`
+
+### Retrieve/merge
+
+- Put a disk file below cursor position `:r filename`
+- Combine with external commands, e.g.  `:r !ls`
 
 ### External command 
 
 - Execute an external command with `:!` followed by the command
 
+### Help
 
+- Help for a command `:help cmd`
+- Jump to another window `ctrl + w`
+- Press `ctrl + d` to see possible completions and `tab` to use one completion
 
 ## Explanations 
 
@@ -148,9 +184,8 @@ alias ctags >> ~/.zshrc
 
 The second line will add `ctags=/usr/local/bin/ctags` to the .zshrc file.
 
-Add `set tags=tags` to the `.vimrc` file with:
+Add `set tags=tags` to the `.vimrc` file:
 
 ```vim
 set tags=tags
 ```
-
