@@ -135,6 +135,11 @@ Open the .vimrc file with:
 vim ~/.vimrc
 ```
 
+To activate changes to the .vimrc file you have to reload the .vimrc file to make the changes take place:
+```shell
+:source ~/.vimrc
+```
+
 ## Plugin Manager
 
 I am using vim-plug a minimalist Vim plugin manager ([Github](https://github.com/junegunn/vim-plug)).
