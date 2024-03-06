@@ -36,6 +36,26 @@ git init
 git clone remote_repo_path
 ```
 
+### Update remote repository path
+```shell
+git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+```
+
+Check the remote repository url with: `git remote -v`
+
+### Set local username and email 
+
+If you would like to set a username or email different from the global setting you can do so with:
+```shell
+git config user.name "Your Name"
+git config user.email email@address.com
+```
+
+You can check your settings with:
+```shell
+git config --local -l
+```
+
 ## Typical workflow
 
 A local git repository consists of three "instances". The first is your **working directory**, which contains the actual files. The second is the **index** (also called stage or cache) that caches information about the working directory and the changes to be committed. The last one is the **HEAD** pointing to your last commit.
@@ -254,6 +274,22 @@ and for a single directory:
 ```shell
 git rm --cached -r directoryname
 ```
+
+### Git Submodules
+
+You can add a git submodule to your project with:
+```shell
+git submodule add <remote_url> <destination_folder>
+```
+
+When adding a git submodule, the submodule will be staged and as a consequence you need to commit your submodule. 
+
+#### Update a git submodule
+
+```shell
+git submodule update --remote --merge
+```
+In order to update an existing git submodule with the `--remote` command you don't need to run `git pull` commands for each submodule. 
 
 ## .gitignore
 
