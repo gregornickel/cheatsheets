@@ -14,6 +14,7 @@ My personal summary of vimtutor with the most useful commands.
 - `esq` to switch to command mode
 - Exit the editor and discard any changes `:q!` 
 - Save file and exit `:wq`
+  - Save file and exit in normal mode `zz`
 
 ### Navigate
 
@@ -27,6 +28,23 @@ My personal summary of vimtutor with the most useful commands.
 - Move to the start of the file `gg`
 - Move to a specific line by typing `number + G`
   - `ctrl + g` shows the location in the file
+
+#### Horizontal and vertical splits
+
+- New horizontal window `:split filename` or `:sp filename`
+- New vertical window `:vsplit filename` or `:vs filename`
+- Navigate to the below/right window `ctrl+w` followed by `w`
+- Navigate to the above/left window `ctrl+w` followed by `W`
+- Switch towards the respective direction `ctrl+w` followed by `hjkl` or `t` for top/first or `b` bottom/last window
+
+#### Buffer
+
+- Open another file in a separate buffer `:e filename`
+- Jump to the next buffer `:bn`
+- Jump to the previous buffer `:bp`
+- Jump to the first buffer `:bf`
+- Jump to the last buffer `:bl`
+- Show all open buffers `buffers`
 
 ### Delete 
 
@@ -88,12 +106,14 @@ My personal summary of vimtutor with the most useful commands.
   - Highlight all matching phrases `:set hls` or `:set hlsearch`
 - Switch an option off `:set noic`, etc.
 
-### Visual selection 
+### Visual mode 
 
 - Select text `v`
-  - Write selected text to file `:w filename`
-  - Delete selection `:d`
   - Yank (copy) the highlighted text `y`
+  - Delete selection `:d`
+  - Write selected text to file `:w filename`
+- Indent current line or selection `>>`
+- Unindent current line or selection `<<`
 
 ### Retrieve/merge
 
@@ -107,7 +127,6 @@ My personal summary of vimtutor with the most useful commands.
 ### Help
 
 - Help for a command `:help cmd`
-- Jump to another window `ctrl + w`
 - Press `ctrl + d` to see possible completions and `tab` to use one completion
 
 ## Explanations 
@@ -194,3 +213,17 @@ Add `set tags=tags` to the `.vimrc` file:
 ```vim
 set tags=tags
 ```
+
+## Neovim
+
+Neovim is a newer version of vim with some advantages. It can be installed with: 
+
+```
+brew install neovim
+```
+
+To start neovim instead of vim we add `echo "alias vim='nvim'" >> ~/.zshrc` to the Z shell .rc file and reload the file with `source ~/.zshrc`.
+
+### Configuration
+
+In contrast to `~/.vimrc`, neovim organizes configuration under `~/.config/nvim/init.vim`
