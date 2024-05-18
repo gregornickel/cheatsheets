@@ -295,7 +295,7 @@ In order to update an existing git submodule with the `--remote` command you don
 
 Specify the files and folder which should not be tracked. The `.gitignore` file needs to be placed in the repository folder. 
 
-```
+```sh
 # macOS
 .DS_Store
 
@@ -309,6 +309,36 @@ Specify the files and folder which should not be tracked. The `.gitignore` file 
 *.o
 */build
 ```
+
+## Git hooks
+
+To create a global hook we create a git template to hold our global hook and add the hook to our individual git repository afterwards. 
+
+1. Create a git template, e.g. in our home directory:
+```sh
+git config --global init.templatedir '~/.git-templates'
+```
+2. Create a directory for the global hooks:
+```sh
+mkdir -p ~/.git-templates/hooks
+```
+3. Write our hook: `vim ~/git-templates/hooks/pre-commit`. Example hook:
+```sh
+#!/bin/sh
+
+# Fetch nocheckins when trying to commit
+# This only works for staged changes, there is no hook for the git add command
+echo "" && git grep -i --cached --line-number "nocheckin" && echo "Error: 'nocheckin' found, commit failed" && exit 1
+```
+4. Make sure the hook is executable:
+```sh
+chmod a+x ~/.git-templates/hooks/pre-commit
+```
+5. Re-initialize each existing repository to add the hook: (Note: Changes are not added, if a local hook already exists.)
+```sh
+git init
+```
+
 
 ## Reraly used
 
